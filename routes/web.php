@@ -9,4 +9,6 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/edit/{product}', [ProductController::class, 'edit'])->name('dashboard.edit');
+    Route::put('/dashboard/update/{product}', [ProductController::class, 'update'])->name('dashboard.update');
 });
