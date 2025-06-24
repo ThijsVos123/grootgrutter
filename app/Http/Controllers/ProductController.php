@@ -13,6 +13,6 @@ class ProductController extends Controller
         $totaleVoorraad = $products->sum('aantal');
         $totaleProducten = $products->count();
 
-        return view('admin.index', compact('products', 'totaleVoorraad', 'totaleProducten'));
+        return view('dashboard.index', compact('products', 'totaleVoorraad', 'totaleProducten'));
     }
 }
