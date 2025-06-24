@@ -10,3 +10,5 @@ Route::middleware([
 ])->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('dashboard');
 });
+
+Route::get('/bestellijst', [App\Http\Controllers\BestellijstController::class, 'index'])->name('bestellijst.index');
