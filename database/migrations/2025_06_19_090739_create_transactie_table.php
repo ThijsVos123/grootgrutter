@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('transactie', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('medewerker_id')->constrained('medewerker')->onDelete('cascade');
             $table->dateTime('datum');
             $table->timestamps();
         });
+
     }
 
     /**

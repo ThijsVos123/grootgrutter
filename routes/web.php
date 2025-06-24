@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BestellijstController;
+use App\Http\Controllers\BestellingController;
 
 Route::middleware([
     'auth:sanctum',
@@ -14,3 +16,7 @@ Route::middleware([
 });
 
 Route::get('/bestellijst', [App\Http\Controllers\BestellijstController::class, 'index'])->name('bestellijst.index');
+Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard.index');
+Route::post('/bestellingen', [BestellijstController::class, 'store'])->name('bestellingen.index');
+Route::post('/bestellingen', [BestellingController::class, 'store'])->name('bestellingen.store');
+
