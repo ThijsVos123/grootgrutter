@@ -12,3 +12,5 @@ Route::middleware([
     Route::get('/dashboard/edit/{product}', [ProductController::class, 'edit'])->name('dashboard.edit');
     Route::put('/dashboard/update/{product}', [ProductController::class, 'update'])->name('dashboard.update');
 });
+
+Route::get('/bestellijst', [App\Http\Controllers\BestellijstController::class, 'index'])->name('bestellijst.index');
