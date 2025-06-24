@@ -11,6 +11,7 @@ Route::middleware([
     Route::get('/', [ProductController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/edit/{product}', [ProductController::class, 'edit'])->name('dashboard.edit');
     Route::put('/dashboard/update/{product}', [ProductController::class, 'update'])->name('dashboard.update');
+    Route::delete('/dashboard/delete/{product}', [ProductController::class, 'destroy'])->name('dashboard.destroy');
 });
 
 Route::get('/bestellijst', [App\Http\Controllers\BestellijstController::class, 'index'])->name('bestellijst.index');
