@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('product_id')->onDelete('cascade');
             $table->integer('oudvoorraad')->nullable();
             $table->integer('nieuwvoorraad')->nullable();
             $table->string('reden')->nullable();

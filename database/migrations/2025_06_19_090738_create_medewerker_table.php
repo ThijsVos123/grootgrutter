@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('inlognaam', 50);
             $table->string('wachtwoord', 50);
-            $table->foreignId('rol_id')->constrained('rol')->onDelete('restrict');
+            $table->unsignedBigInteger('rol_id')->onDelete('restrict');
             $table->timestamps();
         });
     }

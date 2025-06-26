@@ -14,8 +14,8 @@ return new class extends Migration
         // bestelling migration
         Schema::create('bestelling', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('transactie_id')->constrained('transactie')->onDelete('cascade');
-            $table->foreignId('product_id')->constrained('product')->onDelete('restrict');
+            $table->unsignedBigInteger('transactie_id')->onDelete('cascade');
+            $table->unsignedBigInteger('product_id')->onDelete('restrict');
             $table->string('omschrijving', 60);
             $table->decimal('prijs', 5, 2);
             $table->integer('aantal');
