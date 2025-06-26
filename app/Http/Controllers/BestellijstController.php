@@ -8,7 +8,7 @@ class BestellijstController extends Controller
 {
     public function index()
     {
-        $productenOnderVoorraad = Product::where('aantal', '<', 10)->get();
+        $productenOnderVoorraad = Product::whereColumn('aantal', '<', 'minvoorraad')->get();
 
         return view('bestellijst.index', [
             'products' => $productenOnderVoorraad,
