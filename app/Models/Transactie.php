@@ -11,7 +11,7 @@ class Transactie extends Model
     protected $fillable = [
         'medewerker_id',
         'datum',
-        'status', // als je status gebruikt
+        'status',
     ];
 
     // Relatie met medewerker (als je dat gebruikt)

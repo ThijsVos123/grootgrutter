@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Windmill Dashboard</title>
+    <title>GrootGrutter Bestellingen</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
@@ -95,8 +95,6 @@
                 </li>
         </div>
     </aside>
-    <!-- Mobile sidebar -->
-    <!-- Backdrop -->
     <div
         x-show="isSideMenuOpen"
         x-transition:enter="transition ease-in-out duration-150"
@@ -375,7 +373,7 @@
                 <h2
                     class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
                 >
-                    Dashboard
+                    Openstaande Bestellingen
                 </h2>
 
                 <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">

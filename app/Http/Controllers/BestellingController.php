@@ -32,7 +32,6 @@ class BestellingController extends Controller
             'aantal' => $request->bestel_aantal,
         ]);
 
-        // Pas voorraad aan
         $product->aantal += $request->bestel_aantal;
         $product->save();
 

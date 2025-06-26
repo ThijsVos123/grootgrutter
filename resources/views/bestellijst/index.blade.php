@@ -38,7 +38,7 @@
                         </td>
                         <td class="px-4 py-3">
                             <button type="submit"
-                                    class="px-3 py-1 text-white bg-blue-600 rounded hover:bg-blue-700">
+                                    class="px-3 py-1 text-white bg-purple-600 rounded hover:bg-blue-700">
                                 Bestel
                             </button>
                             </form>
