@@ -57,6 +57,15 @@
                         <input id="aantal" name="aantal" type="number" value="{{ old('aantal', $product->aantal) }}"
                                class="form-input mt-1 block w-full dark:bg-gray-700 dark:text-white">
                     </div>
+                    <div class="md:col-span-2">
+                        <label for="logs_reden" class="block text-sm text-gray-700 dark:text-gray-400">Reden voorraadwijziging</label>
+                        <textarea id="logs_reden" name="logs_reden" rows="3"
+                                  class="form-textarea mt-1 block w-full dark:bg-gray-700 dark:text-white"
+                                  placeholder="Vul hier een reden in.">{{ old('logs_reden') }}</textarea>
+                        @error('logs_reden')
+                        <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="flex items-center justify-end mt-6 space-x-4">
@@ -64,7 +73,7 @@
                             class="px-5 py-2 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                         Opslaan
                     </button>
-                    <a href="{{ route('dashboard') }}"
+                    <a href="{{ route('dashboard.index') }}"
                        class="text-sm text-gray-600 dark:text-gray-400 hover:underline">
                         Annuleren
                     </a>
