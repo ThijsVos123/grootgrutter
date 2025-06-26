@@ -30,11 +30,19 @@ class ProductController extends Controller
             'artikelgroep' => 'nullable|string|max:255',
             'eenheid' => 'nullable|string|max:255',
             'prijs' => 'nullable|numeric',
+            'minvoorraad' => 'nullable|integer',
             'aantal' => 'nullable|integer',
         ]);
 
         $product->update($validated);
 
         return redirect()->route('dashboard')->with('success', 'Product bijgewerkt.');
+    }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Product succesvol verwijderd.');
     }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('artikelgroep', 50);
             $table->string('eenheid', 10);
             $table->decimal('prijs', 5, 2);
+            $table->integer('minvoorraad');
             $table->integer('aantal');
             $table->timestamps();
         });
