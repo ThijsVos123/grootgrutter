@@ -16,4 +16,11 @@ class Product extends Model
     {
         return $this->hasMany(Logs::class);
     }
+
+    protected $appends = ['naam'];
+
+    public function getNaamAttribute()
+    {
+        return $this->omschrijving;
+    }
 }

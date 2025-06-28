@@ -1,0 +1,2 @@
+barcode,name,price,category_id,leverancier,quantity,eenheid,minvoorraad
+123487,Test,2.50,1,Henk,20,1L,10

@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medewerker', function (Blueprint $table) {
+        Schema::create('verkoopstatistieken', function (Blueprint $table) {
             $table->id();
-            $table->string('inlognaam', 50);
-            $table->string('wachtwoord', 50);
-            $table->unsignedBigInteger('rol_id')->onDelete('restrict');
+            $table->string('artikelgroep'); // bijv. 'Aardappels, groente en fruit'
+            $table->integer('jaar');        // bijv. 2025
+            $table->integer('maand');       // bijv. 6 (juni)
+            $table->integer('totaal_aantal'); // bijv. 120 verkocht
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medewerker');
+        Schema::dropIfExists('verkoopstatistieken');
     }
 };

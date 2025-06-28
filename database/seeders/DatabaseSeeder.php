@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use Product;
-use Database\Seeders\RolSeeder;
+use App\Models\User;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Database\Seeders\ProductSeeder;
-use Database\Seeders\MedewerkerSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,11 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            RolSeeder::class,
-            MedewerkerSeeder::class,
-            ProductSeeder::class,
-
-        ]);
+        $this->call(RoleSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(ProductSeeder::class);
+        $this->call(StatistiekenSeeder::class);
     }
 }

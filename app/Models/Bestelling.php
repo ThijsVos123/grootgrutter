@@ -15,4 +15,14 @@ class Bestelling extends Model
         'prijs',
         'aantal',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function transactie()
+    {
+        return $this->belongsTo(Transactie::class);
+    }
 }

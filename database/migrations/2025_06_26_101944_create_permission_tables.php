@@ -21,29 +21,40 @@ return new class extends Migration
         throw_if($teams && empty($columnNames['team_foreign_key'] ?? null), new Exception('Error: team_foreign_key on config/permission.php not loaded. Run [php artisan config:clear] and try again.'));
 
         Schema::create($tableNames['permissions'], static function (Blueprint $table) {
-            // $table->engine('InnoDB');
+            // Define the primary key
             $table->bigIncrements('id'); // permission id
-            $table->string('name', 191);       // For MyISAM use string('name', 225); // (or 166 for InnoDB with Redundant/Compact row format)
-            $table->string('guard_name', 191); // For MyISAM use string('guard_name', 25);
+
+            // IMPORTANT FIX: Reduce the actual column length to ensure index compatibility.
+            // For utf8mb4 (4 bytes/char), 125 chars for 'name' and 50 for 'guard_name' results in:
+            // (125 * 4) + (50 * 4) = 500 + 200 = 700 bytes, which is well under the 767-byte limit
+            // and allows the full column to be indexed without explicit prefix lengths.
+            $table->string('name', 125);
+            $table->string('guard_name', 50); // Guard name is usually much shorter
+
             $table->timestamps();
 
-            $table->unique(['name', 'guard_name']);
+            // With the reduced column lengths, a simple composite index should now work
+            $table->index(['name', 'guard_name']);
         });
 
         Schema::create($tableNames['roles'], static function (Blueprint $table) use ($teams, $columnNames) {
-            // $table->engine('InnoDB');
             $table->bigIncrements('id'); // role id
-            if ($teams || config('permission.testing')) { // permission.testing is a fix for sqlite testing
+
+            if ($teams || config('permission.testing')) {
                 $table->unsignedBigInteger($columnNames['team_foreign_key'])->nullable();
                 $table->index($columnNames['team_foreign_key'], 'roles_team_foreign_key_index');
             }
-            $table->string('name', 191);       // For MyISAM use string('name', 225); // (or 166 for InnoDB with Redundant/Compact row format)
-            $table->string('guard_name', 191); // For MyISAM use string('guard_name', 25);
+
+            // IMPORTANT FIX: Apply the same reduced column lengths to the roles table
+            $table->string('name', 125);
+            $table->string('guard_name', 50);
             $table->timestamps();
+
+            // With the reduced column lengths, a simple composite index should now work
             if ($teams || config('permission.testing')) {
-                $table->unique([$columnNames['team_foreign_key'], 'name', 'guard_name']);
+                $table->index([$columnNames['team_foreign_key'], 'name', 'guard_name']);
             } else {
-                $table->unique(['name', 'guard_name']);
+                $table->index(['name', 'guard_name']);
             }
         });
 
